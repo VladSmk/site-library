@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New people</title>
+</head>
+<body>
+
+<h1>New People</h1>
+
+<form th:method="POST" th:action="@{/people/newPeople}" th:object="${people}">
+    <br>
+    <br>
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br>
+    <br>
+    <label for="year">Enter year of birth: </label>
+    <input type="text" th:field="*{year}" id="year">
+    <br>
+    <br>
+    <input type="submit" value="create">
+</form>
+
+</body>
+</html>
