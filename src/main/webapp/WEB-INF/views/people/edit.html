@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit</title>
+    <title>Edit people</title>
 </head>
 <body>
 
 <h1>Edit</h1>
+<form th:method="PATCH" th:action="@{/people/editPeople}" th:object="${people}">
+    <lable for="name">Enter new name: </lable>
+    <input type="text" th:field="*{name}" id="name">
+    <br>
+    <br>
+    <lable for="year">Enter new year: </lable>
+    <input type="text" th:field="*{year}" id="year">
+    <br>
+    <br>
+    <input type="submit" value="edit">
+</form>
+
 
 </body>
 </html>

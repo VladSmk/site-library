@@ -18,7 +18,8 @@ public class PeopleController {
 
 
     @GetMapping()
-    public String peoples(){
+    public String peoples(Model model){
+        model.addAttribute("people_list", peopleDAO.getPeopleList());
         return "people/index";
     }
 
@@ -35,7 +36,19 @@ public class PeopleController {
 
     @GetMapping("/{id}/edit")
     public String edit_people (@PathVariable("id") int id, Model model) {
+        model.addAttribute("people", peopleDAO.getPeopleById(id).get(0));
         return "people/edit";
+    }
+    @PatchMapping("/editPeople")
+    public String edit_people (@ModelAttribute("people") People people) {
+        peopleDAO.editPeople(people);
+        return "redirect:/people";
+    }
+
+    @GetMapping("/{id}")
+    public String look_people (@PathVariable("id") int id, Model model) {
+        model.addAttribute("people", peopleDAO.getPeopleById(id).get(0));
+        return "people/review";
     }
 
 }

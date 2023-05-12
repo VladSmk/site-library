@@ -6,7 +6,13 @@
 </head>
 <body>
 
-<h1>Peoples</h1>
+    <h1>Peoples</h1>
+    <br>
+    <div th:each="people : ${people_list}">
+        <a th:href="@{/people/{id}(id=${people.getId()})}" th:text="${people.getName() + ', ' + people.getYear()}">text</a>
+    </div>
+    <br>
+    <a th:href="@{/people/new}" th:text="create new people">text</a>
 
 </body>
 </html>

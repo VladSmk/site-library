@@ -3,9 +3,10 @@ package ua.project1.model;
 public class People {
     private int id;
     private String name;
-    private String year;
+    private int year;
     public People(){}
-    public People(int id, String name, String year) {
+
+    public People(int id, String name, int year) {
         this.id = id;
         this.name = name;
         this.year = year;
@@ -27,11 +28,11 @@ public class People {
         this.name = name;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 }
