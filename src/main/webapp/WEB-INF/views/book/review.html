@@ -2,25 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Review book</title>
+    <title th:text="${'book: ' + book.getName()}"></title>
 </head>
 <body>
-
-<h1>Review</h1>
-<br>
-id: <a th:text="${book.getId()}">VALUE</a>
-<br>
-name: <a th:text="${book.getName()}">VALUE</a>
-<br>
-author: <a th:text="${book.getAuthor()}">VALUE</a>
-<br>
-year of birth: <a th:text="${book.getYear()}">VALUE</a>
-<br>
-<br>
+<h3 th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}">VALUE</h3>
 <form th:action="@{/book/{id}/edit (id=${book.getId()})}">
     <input type="submit" value="edit">
 </form>
+
+<!--<div th:if="${isBookBusy}">-->
+<!--    <p th:text="BUSY"></p>-->
+<!--</div>-->
+<!--<div th:if="${!isBookBusy}">-->
+<!--    <p th:text="NO BUSY"></p>-->
+<!--</div>-->
+
 <br>
+<hr>
 <br>
 <form th:method="DELETE" th:action="@{/book/{id}/delete(id=${book.getId()})}">
     <input type="submit" value="delete">

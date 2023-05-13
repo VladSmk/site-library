@@ -2,23 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Review people</title>
+    <title th:text="${'people: ' + people.getName()}"></title>
 </head>
 <body>
 
-<h1>Review</h1>
-<br>
-id: <a th:text="${people.getId()}">VALUE</a>
-<br>
-name: <a th:text="${people.getName()}">VALUE</a>
-<br>
-year of birth: <a th:text="${people.getYear()}">VALUE</a>
-<br>
-<br>
+<h3 th:text="${people.getName() + ', ' + people.getYear()}">VALUE</h3>
 <form th:action="@{/people/{id}/edit (id=${people.getId()})}">
     <input type="submit" value="edit">
 </form>
-<br>
 <br>
 <form th:method="DELETE" th:action="@{/people/{id}/delete(id=${people.getId()})}">
     <input type="submit" value="delete">

@@ -7,14 +7,15 @@
 <body>
 
 <h1>Edit Book</h1>
-id: <a th:text="${book.getId()}">text</a>
 <form th:method="PATCH" th:action="@{/book/{id}/edit(id=${book.getId()})}" th:object="${book}">
     <lable for="name">Enter new name: </lable>
     <input type="text" th:field="*{name}" id="name">
     <br>
     <br>
     <lable for="author">Enter new author: </lable>
-    <input type="text" th:field="*{author}" id="author">
+    <select th:field="*{author}" id="author">
+        <option th:each="author : ${author_list}" th:value="${author.getId()}" th:text="${author.getName() + ', ' + author.getYear()}"></option>
+    </select>
     <br>
     <br>
     <lable for="year">Enter new year: </lable>

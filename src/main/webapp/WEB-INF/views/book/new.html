@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New Book</title>
+    <title th:text="${'book:' + book.getName()}"></title>
 </head>
 <body>
 
@@ -14,7 +14,9 @@
   <br>
   <br>
   <label for="author">Enter author: </label>
-  <input type="text" th:field="*{author}" id="author">
+  <select th:field="*{author}" id="author">
+    <option th:each="author : ${author_list}" th:value="${author.getId()}" th:text="${author.getName() + ', ' + author.getYear()}"></option>
+  </select>
   <br>
   <br>
   <label for="year">Enter year: </label>
