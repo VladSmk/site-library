@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Book</title>
+</head>
+<body>
+
+<h1>New Book</h1>
+
+<form th:method="POST" th:action="@{/book/new}" th:object="${book}">
+  <label for="name">Enter name: </label>
+  <input type="text" th:field="*{name}" id="name">
+  <br>
+  <br>
+  <label for="author">Enter author: </label>
+  <input type="text" th:field="*{author}" id="author">
+  <br>
+  <br>
+  <label for="year">Enter year: </label>
+  <input type="text" th:field="*{year}" id="year">
+  <br>
+  <br>
+  <input type="submit" value="add">
+</form>
+
+</body>
+</html>

@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit people</title>
+    <title>Edit book</title>
 </head>
 <body>
 
-<h1>Edit</h1>
-id: <a th:text="${people.getId()}">text</a>
-<form th:method="PATCH" th:action="@{/people/{id}/edit(id=${people.getId()})}" th:object="${people}">
+<h1>Edit Book</h1>
+id: <a th:text="${book.getId()}">text</a>
+<form th:method="PATCH" th:action="@{/book/{id}/edit(id=${book.getId()})}" th:object="${book}">
     <lable for="name">Enter new name: </lable>
     <input type="text" th:field="*{name}" id="name">
+    <br>
+    <br>
+    <lable for="author">Enter new author: </lable>
+    <input type="text" th:field="*{author}" id="author">
     <br>
     <br>
     <lable for="year">Enter new year: </lable>
@@ -19,7 +23,6 @@ id: <a th:text="${people.getId()}">text</a>
     <br>
     <input type="submit" value="edit">
 </form>
-
 
 </body>
 </html>

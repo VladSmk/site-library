@@ -8,7 +8,7 @@
 
 <h1>New People</h1>
 
-<form th:method="POST" th:action="@{/people/newPeople}" th:object="${people}">
+<form th:method="POST" th:action="@{/people/new}" th:object="${people}">
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name">
     <br>

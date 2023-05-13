@@ -28,7 +28,7 @@ public class PeopleController {
         model.addAttribute("people", new People());
         return "people/new";
     }
-    @PostMapping("/newPeople")
+    @PostMapping("/new")
     public String create_new_people (@ModelAttribute("people") People people) {
         peopleDAO.add_people(people);
         return "redirect:/people";
@@ -39,7 +39,7 @@ public class PeopleController {
         model.addAttribute("people", peopleDAO.getPeopleById(id));
         return "people/edit";
     }
-    @PatchMapping("/editPeople/{id}")
+    @PatchMapping("/{id}/edit")
     public String edit_people (@ModelAttribute("people") People people,
                                @PathVariable("id") int id) {
         people.setId(id);
