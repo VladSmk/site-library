@@ -36,19 +36,27 @@ public class PeopleController {
 
     @GetMapping("/{id}/edit")
     public String edit_people (@PathVariable("id") int id, Model model) {
-        model.addAttribute("people", peopleDAO.getPeopleById(id).get(0));
+        model.addAttribute("people", peopleDAO.getPeopleById(id));
         return "people/edit";
     }
-    @PatchMapping("/editPeople")
-    public String edit_people (@ModelAttribute("people") People people) {
+    @PatchMapping("/editPeople/{id}")
+    public String edit_people (@ModelAttribute("people") People people,
+                               @PathVariable("id") int id) {
+        people.setId(id);
         peopleDAO.editPeople(people);
-        return "redirect:/people";
+        return "redirect:/people/"+people.getId();
     }
 
     @GetMapping("/{id}")
     public String look_people (@PathVariable("id") int id, Model model) {
-        model.addAttribute("people", peopleDAO.getPeopleById(id).get(0));
+        model.addAttribute("people", peopleDAO.getPeopleById(id));
         return "people/review";
+    }
+
+    @DeleteMapping("/{id}/delete")
+    public String delete_people (@PathVariable("id") int id) {
+        peopleDAO.deletePeople(id);
+        return "redirect:/people";
     }
 
 }

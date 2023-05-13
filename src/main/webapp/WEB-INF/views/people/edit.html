@@ -7,7 +7,8 @@
 <body>
 
 <h1>Edit</h1>
-<form th:method="PATCH" th:action="@{/people/editPeople}" th:object="${people}">
+id: <a th:text="${people.getId()}">text</a>
+<form th:method="PATCH" th:action="@{/people/editPeople/{id}(id=${people.getId()})}" th:object="${people}">
     <lable for="name">Enter new name: </lable>
     <input type="text" th:field="*{name}" id="name">
     <br>

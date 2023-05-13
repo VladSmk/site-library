@@ -13,6 +13,15 @@ id: <a th:text="${people.getId()}">VALUE</a>
 name: <a th:text="${people.getName()}">VALUE</a>
 <br>
 year of birth: <a th:text="${people.getYear()}">VALUE</a>
-
+<br>
+<br>
+<form th:action="@{/people/{id}/edit (id=${people.getId()})}">
+    <input type="submit" value="edit">
+</form>
+<br>
+<br>
+<form th:method="DELETE" th:action="@{/people/{id}/delete(id=${people.getId()})}">
+    <input type="submit" value="delete">
+</form>
 </body>
 </html>

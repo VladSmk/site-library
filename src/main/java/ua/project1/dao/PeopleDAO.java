@@ -24,14 +24,17 @@ public class PeopleDAO {
         return jdbcTemplate.query("SELECT * FROM library.people;", new PeopleMapper());
     }
 
-    public List<People> getPeopleById (int id) {
+    public People getPeopleById (int id) {
         return jdbcTemplate.query("SELECT * FROM library.people WHERE id=?;",
-                new Object[]{id}, new PeopleMapper());
+                new Object[]{id}, new PeopleMapper()).stream().findAny().orElse(null);
     }
 
     public void editPeople (People people) {
-        jdbcTemplate.update("UPDATE library.people SET name=?, year=? WHERE id=?",
+        jdbcTemplate.update("UPDATE library.people SET `name`=?, `year`=? WHERE id=?;",
                 people.getName(), people.getYear(), people.getId());
+    }
+    public void deletePeople (int id) {
+        jdbcTemplate.update("DELETE FROM library.people WHERE id=?", id);
     }
 
 
